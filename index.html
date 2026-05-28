@@ -1,38 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect Button</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holla nour :)</title>
 
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: #f4f4f4;
-            font-family: Arial, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
 
-        .button {
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #a18cd1);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    text-align:center;
+    color:white;
+    z-index:2;
+    padding:20px;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:10px;
+    text-shadow:0 0 15px rgba(255,255,255,0.7);
+}
+
+p{
+    font-size:1.3rem;
+    margin-bottom:30px;
+    opacity:0.95;
+}
+
+.button{
+    padding:18px 40px;
+    font-size:22px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    color:white;
+    background: linear-gradient(90deg, #ff4e8a, #ff7eb3);
+    box-shadow:0 0 20px rgba(255, 105, 180, 0.6);
+    transition:0.3s ease;
+}
+
+.button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 35px rgba(255,105,180,1);
+}
+
+.button:active{
+    transform:scale(0.95);
+}
+
+/* Hearts */
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation: float linear infinite;
+    opacity:0.8;
+    user-select:none;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(0.5);
+        opacity:0;
+    }
+    10%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120vh) scale(1.2);
+        opacity:0;
+    }
+}
+</style>
 </head>
 <body>
 
-<button class="button"
-onclick="window.location.href='https://nakamura-mtb-110.github.io/for_you/'">
-    Click Here
-</button>
+<div class="container">
+    <h1>Holla nour :)</h1>
+    <p>Can you click below 👇</p>
+
+    <button class="button"
+    onclick="window.location.href='https://nakamura-mtb-110.github.io/butoon/'">
+        click here cutie 💖
+    </button>
+</div>
+
+<script>
+const colors = [
+    "#ff4d6d", "#ff85a2", "#ff006e",
+    "#c77dff", "#7b2cbf", "#ffbe0b",
+    "#3a86ff", "#06d6a0", "#fb5607"
+];
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 25 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 6 + 4) + "s";
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createHeart, 250);
+</script>
 
 </body>
 </html>
