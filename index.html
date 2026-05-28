@@ -3,134 +3,550 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holla nour :)</title>
+<title>For Nour 💖</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
+    overflow:hidden;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
-    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1, #a18cd1);
-    background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
+    background:
+    radial-gradient(circle at top,#2b1055,#120c2c 70%);
+    position:relative;
 }
 
-@keyframes bgMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+/* Moon */
+.moon{
+    position:absolute;
+    top:70px;
+    right:100px;
+    width:130px;
+    height:130px;
+    background:#fff8dc;
+    border-radius:50%;
+    box-shadow:
+    0 0 60px rgba(255,255,255,.8),
+    0 0 120px rgba(255,255,255,.3);
 }
 
-.container{
+/* Stars */
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    animation:twinkle infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.2;}
+    to{opacity:1;}
+}
+
+/* Shooting stars */
+.shooting-star{
+    position:absolute;
+    width:2px;
+    height:100px;
+    background:linear-gradient(white,transparent);
+    transform:rotate(45deg);
+    animation:shoot 3s linear infinite;
+}
+
+@keyframes shoot{
+    from{
+        transform:
+        translate(0,0)
+        rotate(45deg);
+        opacity:1;
+    }
+    to{
+        transform:
+        translate(-700px,700px)
+        rotate(45deg);
+        opacity:0;
+    }
+}
+
+/* Mouse glow */
+.glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    pointer-events:none;
+    background:
+    radial-gradient(circle,
+    rgba(255,255,255,.2),
+    transparent 70%);
+    transform:translate(-50%,-50%);
+}
+
+/* Glass card */
+.card{
+    width:90%;
+    max-width:500px;
     text-align:center;
-    color:white;
-    z-index:2;
-    padding:20px;
+    padding:50px;
+    border-radius:35px;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:
+    0 8px 32px rgba(0,0,0,.3);
+    z-index:5;
+    animation:float 5s ease infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
 }
 
 h1{
+    color:white;
     font-size:3rem;
-    margin-bottom:10px;
-    text-shadow:0 0 15px rgba(255,255,255,0.7);
+    margin-bottom:15px;
+    text-shadow:0 0 20px hotpink;
 }
 
 p{
-    font-size:1.3rem;
+    color:white;
+    font-size:1.2rem;
     margin-bottom:30px;
-    opacity:0.95;
 }
 
+/* Premium button */
 .button{
-    padding:18px 40px;
-    font-size:22px;
     border:none;
+    padding:18px 42px;
     border-radius:50px;
+    font-size:22px;
     cursor:pointer;
     color:white;
-    background: linear-gradient(90deg, #ff4e8a, #ff7eb3);
-    box-shadow:0 0 20px rgba(255, 105, 180, 0.6);
-    transition:0.3s ease;
+    background:
+    linear-gradient(
+    135deg,
+    #ff4d6d,
+    #ff85a2);
+
+    box-shadow:
+    0 0 25px rgba(255,0,128,.5);
+
+    transition:.3s;
 }
 
 .button:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 35px rgba(255,105,180,1);
-}
+    transform:
+    scale(1.08)
+    translateY(-4px);
 
-.button:active{
-    transform:scale(0.95);
+    box-shadow:
+    0 0 45px rgba(255,0,128,1);
 }
 
 /* Hearts */
 .heart{
     position:absolute;
-    font-size:20px;
-    animation: float linear infinite;
-    opacity:0.8;
-    user-select:none;
+    pointer-events:none;
+    animation:
+    floatHeart linear forwards;
 }
 
-@keyframes float{
-    0%{
-        transform:translateY(100vh) scale(0.5);
+@keyframes floatHeart{
+    from{
+        transform:
+        translateY(100vh)
+        scale(.5);
         opacity:0;
     }
+
     10%{
         opacity:1;
     }
-    100%{
-        transform:translateY(-120vh) scale(1.2);
+
+    to{
+        transform:
+        translateY(-120vh)
+        rotate(360deg);
         opacity:0;
     }
+}
+
+/* Heart trail */
+.trail{
+    position:fixed;
+    pointer-events:none;
+    animation:trailFade .8s forwards;
+}
+
+@keyframes trailFade{
+    to{
+        transform:translateY(-15px);
+        opacity:0;
+    }
+}
+
+/* Message popup */
+.message{
+    position:absolute;
+    top:100px;
+    color:white;
+    font-size:18px;
+    animation:fadeMsg 4s forwards;
+}
+
+@keyframes fadeMsg{
+    0%{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+}
+
+/* Overlay */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:black;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    opacity:0;
+    visibility:hidden;
+    transition:1s;
+    z-index:999;
+}
+
+.overlay.show{
+    opacity:.95;
+    visibility:visible;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Holla nour :)</h1>
+<div class="moon"></div>
+<div class="glow"></div>
+
+<div class="card">
+    <h1 id="typing"></h1>
     <p>Can you click below 👇</p>
 
-    <button class="button"
-    onclick="window.location.href='https://nakamura-mtb-110.github.io/butoon/'">
-        click here cutie 💖
+    <button class="button" id="cuteBtn">
+        click here cutie &lt;3
     </button>
 </div>
 
+<div class="overlay" id="overlay">
+    Taking you somewhere special, nour 💕
+</div>
+
 <script>
-const colors = [
-    "#ff4d6d", "#ff85a2", "#ff006e",
-    "#c77dff", "#7b2cbf", "#ffbe0b",
-    "#3a86ff", "#06d6a0", "#fb5607"
-];
+/* Typing effect */
+const text="Holla nour :)";
+let i=0;
 
-function createHeart(){
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
+function type(){
+    if(i<text.length){
+        document
+        .getElementById("typing")
+        .innerHTML+=text.charAt(i);
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 25 + 15) + "px";
-    heart.style.animationDuration = (Math.random() * 6 + 4) + "s";
-    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        i++;
+        setTimeout(type,120);
+    }
+}
+type();
 
-    document.body.appendChild(heart);
+/* Stars */
+for(let i=0;i<120;i++){
+    let star=
+    document.createElement("div");
 
-    setTimeout(() => {
-        heart.remove();
-    }, 10000);
+    star.className="star";
+
+    let size=
+    Math.random()*3+1;
+
+    star.style.width=
+    size+"px";
+
+    star.style.height=
+    size+"px";
+
+    star.style.left=
+    Math.random()*100+"vw";
+
+    star.style.top=
+    Math.random()*100+"vh";
+
+    star.style.animationDuration=
+    Math.random()*3+1+"s";
+
+    document.body
+    .appendChild(star);
 }
 
-setInterval(createHeart, 250);
+/* Shooting stars */
+setInterval(()=>{
+    const s=
+    document.createElement("div");
+
+    s.className=
+    "shooting-star";
+
+    s.style.top=
+    Math.random()*300+"px";
+
+    s.style.left=
+    Math.random()*100+"vw";
+
+    document.body
+    .appendChild(s);
+
+    setTimeout(()=>{
+        s.remove();
+    },3000);
+
+},2500);
+
+/* Floating hearts */
+const hearts=
+["💖","💜","💙","💚","💛","🧡","❤️","💕"];
+
+function createHeart(){
+    const h=
+    document.createElement("div");
+
+    h.className=
+    "heart";
+
+    h.innerHTML=
+    hearts[
+    Math.floor(
+    Math.random()
+    *hearts.length)];
+
+    h.style.left=
+    Math.random()*100+
+    "vw";
+
+    h.style.fontSize=
+    Math.random()*25+
+    20+"px";
+
+    h.style.animationDuration=
+    Math.random()*6+
+    5+"s";
+
+    document.body
+    .appendChild(h);
+
+    setTimeout(()=>{
+        h.remove();
+    },10000);
+}
+
+setInterval(createHeart,150);
+
+/* Mouse glow */
+document
+.addEventListener(
+"mousemove",e=>{
+
+document
+.querySelector(".glow")
+.style.left=
+e.clientX+"px";
+
+document
+.querySelector(".glow")
+.style.top=
+e.clientY+"px";
+
+/* Heart trail */
+const t=
+document
+.createElement("div");
+
+t.className=
+"trail";
+
+t.innerHTML="💖";
+
+t.style.left=
+e.clientX+"px";
+
+t.style.top=
+e.clientY+"px";
+
+document.body
+.appendChild(t);
+
+setTimeout(()=>{
+t.remove();
+},800);
+});
+
+/* Random cute msgs */
+const msgs=[
+"hehe click it 👀",
+"don't be shy 💕",
+"one click away 😭",
+"trust me cutie 💖"
+];
+
+setInterval(()=>{
+const msg=
+document
+.createElement("div");
+
+msg.className=
+"message";
+
+msg.innerText=
+msgs[
+Math.floor(
+Math.random()
+*msgs.length)];
+
+msg.style.left=
+Math.random()*70+
+15+"vw";
+
+document.body
+.appendChild(msg);
+
+setTimeout(()=>{
+msg.remove();
+},4000);
+
+},4500);
+
+/* Button personality */
+const btnTexts=[
+"click here cutie <3",
+"pretty please 😭",
+"trust me 👀",
+"one click away 💕"
+];
+
+setInterval(()=>{
+document
+.getElementById("cuteBtn")
+.innerText=
+btnTexts[
+Math.floor(
+Math.random()
+*btnTexts.length)];
+},3000);
+
+/* Heart explosion */
+function explode(x,y){
+for(let i=0;i<35;i++){
+
+const h=
+document
+.createElement("div");
+
+h.innerHTML="💖";
+
+h.style.position=
+"fixed";
+
+h.style.left=
+x+"px";
+
+h.style.top=
+y+"px";
+
+h.style.zIndex=
+9999;
+
+document.body
+.appendChild(h);
+
+const dx=
+(Math.random()-.5)
+*400;
+
+const dy=
+(Math.random()-.5)
+*400;
+
+h.animate([
+{
+transform:
+'translate(0,0)',
+opacity:1
+},
+{
+transform:
+`translate(${dx}px,
+${dy}px)`,
+opacity:0
+}
+],{
+duration:1200
+});
+
+setTimeout(()=>{
+h.remove();
+},1200);
+}
+}
+
+/* Redirect */
+document
+.getElementById(
+"cuteBtn")
+
+.addEventListener(
+"click",e=>{
+
+explode(
+e.clientX,
+e.clientY);
+
+document
+.getElementById(
+"overlay")
+.classList
+.add("show");
+
+setTimeout(()=>{
+window.location.href=
+"https://nakamura-mtb-110.github.io/for_you/";
+},2500);
+
+});
 </script>
 
 </body>
